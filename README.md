@@ -1,7 +1,27 @@
-# Vue 3 + Vite
+## 開発の手順
+#### おおまかな流れ
+1．開発する機能のissueを立てる（github issues参照）  
+2．ブランチを切る（```git checkout -b {ブランチ名}```）  
+3．機能実装（vscode,ローカルで開発）  
+4．切ったブランチにpush  
+5．プルリクエスト出してmainにmerge
+#### 開発用サーバ起動
+```bash
+npm i
+npm run dev
+```
+#### 機能実装後
+実装できたら
+```bash
+git add {変更したファイル名}
+git commit -m "コミットメッセージ"
+git push origin {ブランチ名}
+```
+gitの理解に不安がある　→　これでも見てろ：https://zenn.dev/atsushi101011/articles/4e0e36d238a3b8  
+pushができたらgithubで確認、プルリクを出す
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+#### 気をつけてほしいこと
+* 機能開発を始める前に今いるブランチを要確認！mainブランチでの作業は避けましょう
+* お互いの作業内容を把握しましょう
+* 同じファイルを同時に編集するのはできるだけ避けましょう
+* こまめに```git pull```を行って、ブランチを最新の状態に保ちましょう
