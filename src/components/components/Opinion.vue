@@ -18,8 +18,12 @@ import Text from './components/Text.vue';
 .opinion-box {
     height: 400px;
     width: 40%; 
+    margin-top: 3%;
     font-size: 50px;
     background: #FFFFFE;
+    border: solid;
+    border-width: thin;
+    border-color: black;
     border-radius: 0.25rem;
 }
 .tag-button-box{
