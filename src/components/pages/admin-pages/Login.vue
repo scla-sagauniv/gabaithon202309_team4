@@ -5,10 +5,16 @@ import Input from "../../components/Input.vue"
 <template>
     <div id="flex-main" class="content">
         <div class="sheet">
-            <Input title="e-mail" atti="" class="address" />
+            <!-- <div class="inputbuttons">
+                <Input title="e-mail" atti="" class="" />
+                <Input title="password" atti="password" class="password" />
+            </div> -->
+            <Input title="e-mail" atti="" class="" />
             <Input title="password" atti="password" class="password" />
-            <router-link to="/" class="homebutton">キャンセル</router-link>
-            <router-link to="/read" class="loginbutton">ログイン</router-link>
+            <div class="button-field">
+                <router-link to="/" class="homebutton">キャンセル</router-link>
+                <router-link to="/read" class="loginbutton">ログイン</router-link>
+            </div>           
         </div>
         
     </div>
@@ -37,18 +43,21 @@ import Input from "../../components/Input.vue"
     border-radius: 0.25rem;
 }
 
-.address{
-    position: absolute;
-        top: 25%;
-        left: 30%;
+/* .address{
 }
 .password{
-    position: absolute;
-        top: 45%;
-        left: 30%;
+} */
+.button-field{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    height: 50px;
+    padding-top: 30px;
+    
 }
 .homebutton{
-    width: 10%;
+    width: 22%;
     color: #272343;
     outline: 1px solid black;
     border-radius: 0.25rem;
@@ -56,22 +65,24 @@ import Input from "../../components/Input.vue"
     padding-bottom: 8px;
     text-align: center;
     text-decoration: none;
-    position: absolute;
-    top: 65%;
-    left: 30%;
+    
 }
 .loginbutton{
-    width: 10%;
-    color: #272343;
-    background:  rgb(48, 231, 255);
+    width: 22%;
+    color: white;
+    background:  #3DA9FC;
     outline: 1px solid black;
     border-radius: 0.25rem;
     padding-top: 8px;
     padding-bottom: 8px;
     text-align: center;
-    text-decoration: none;
-    position: absolute;
-    top: 65%;
-    right: 30%;
+    text-decoration: none;   
+}
+.inputbuttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 50px;
 }
 </style>
