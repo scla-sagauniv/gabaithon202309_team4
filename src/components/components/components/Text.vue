@@ -1,5 +1,7 @@
 <script setup></script>
 
-<template></template>
+<template>
+    <div>テキスト</div>
+</template>
 
 <style scoped></style>
