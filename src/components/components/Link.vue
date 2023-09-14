@@ -1,18 +1,13 @@
 <script setup>
-import Link from "../components/Link.vue"
+  const props = defineProps({
+    href: String,
+  });
 </script>
 
 <template>
-    <div id="flex-main" class="content">
-        <div class="title">たいとるろご</div>
-        <div id="flex-buttons" class="content-buttons">
-            <Link href="/post">
-            dsfdsfsfsdfsdfsd
-            <span>fdggfgdgdgdf</span>
-            </Link>
-            <router-link to="/login" class="opinion-button">目安箱を開ける</router-link>
-        </div>
-    </div>
+<router-link :to="href" class="opinion-button">
+<slot />
+</router-link>
 </template>
 
 <style scoped>
