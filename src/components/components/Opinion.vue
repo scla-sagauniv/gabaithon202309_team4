@@ -8,9 +8,8 @@ import Text from '../components/components/Text.vue'
     <div class="opinion-box">
         <div class="tag-button-box">
             <Tag />
+            <Button />
         </div>
-        <!-- <Button />
-        <Text /> -->
     </div>
 </template>
 
@@ -24,8 +23,8 @@ import Text from '../components/components/Text.vue'
 }
 .tag-button-box{
     display: flex;
-    justify-content: row;
+    flex-direction: row;
+    justify-content: space-between;
     padding-top: 1%;
 }
-
 </style>
