@@ -6,7 +6,7 @@
         <div class="title">たいとるろご</div>
         <div id="flex-buttons" class="content-buttons">
             <router-link to="/post" class="opinion-button">意見を送る</router-link>
-            <router-link to="/login" class="opinion-button">意見を送る</router-link>
+            <router-link to="/login" class="opinion-button">目安箱を開ける</router-link>
         </div>
     </div>
 </template>
@@ -45,8 +45,7 @@
     background: #FFD803;
     text-decoration: none;
     color: #272343;
-    padding-left: 10%;
-    padding-right: 10%;
+    width: 35%;
     padding-top: 14px;
     padding-bottom: 14px;
     font-size: 22px;
