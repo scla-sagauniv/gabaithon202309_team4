@@ -1,8 +1,12 @@
 <script setup>
 import Link from "../../components/Link.vue"
+import router from '../../../router'
+
 import { ref } from 'vue';
 const title = ref('');
 const message = ref('');
+const error = ref('');
+
 
 const FetchPost = async (title,message) =>{
     const param ={
@@ -17,10 +21,16 @@ const FetchPost = async (title,message) =>{
     }
     const endpoint = "https://func-gabaithon202309.azurewebsites.net/api/post-content?"
     const res = await fetch(endpoint,title,message)
-    const data = await res.json()
-    console.log(title)
-    console.log(message)
-    return(data)
+    router.push("/result")
+    if(res.status === 200) {
+        const data = await res.json()
+        console.log(title)
+        console.log(message)
+        return;
+    }
+
+    error = "失敗した"
+    // return(data)
 }
 </script>
 
@@ -38,7 +48,7 @@ const FetchPost = async (title,message) =>{
 
             <div class="content">意見</div>
             <textarea class="contentbox" name="text" v-model="message"></textarea>
-            <router-link to="/result" class="postbutton" @click="FetchPost">post</router-link>
+            <button class="postbutton" @click="FetchPost">post</button>
             <p class="test">{{ message }}</p>
             <p class="test2">{{ title }}</p>
         </div>
