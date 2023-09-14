@@ -1,3 +1,7 @@
+<script setup>
+import Link from "../../components/Link.vue"
+</script>
+
 <template>
     <div>
         <div class="sheet">
@@ -14,7 +18,7 @@
             <textarea class="contentbox" name="text" ></textarea>
             <router-link to="/result" class="postbutton">post</router-link>
         </div>
-        <router-link to="/" class="homebutton">←ホームに戻る</router-link>
+        <Link href="/" class="homebutton">←ホームに戻る</Link>
     </div>
 </template>
 
@@ -63,7 +67,7 @@
         width: 140px;
         color: white;
         font-size: 20px;
-        background: #cc3366;
+        background: var(--main-pink);
         font-weight: 600;
         border-radius:5px;
         padding-top: 8px;
@@ -75,26 +79,15 @@
         right: 5%;
     }
     .postbutton:hover{
-        background: #c56182;
+        background: #f4778e;
     }
-    
     .homebutton{
-        width: 180px;
-        color: black;
-        background: #FFD803;
-        font-size: 20px;
-        font-weight: 600;
-        border-radius:5px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        text-align: center;
-        text-decoration: none;
+        
+        
+        
         position: absolute;
         top: 85%;
-        left: 15%;
-    }
-    .homebutton:hover{
-        background: #f8e164;
+        left: 3%;
     }
     
 </style>
