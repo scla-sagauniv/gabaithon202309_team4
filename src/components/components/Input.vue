@@ -1,13 +1,14 @@
 <script setup>
     const props = defineProps({
     title: String,
+    atti: String,
   });
 </script>
 
 <template>
 <div>
     <div>{{ props.title }}</div>
-    <input type="password" class="input-field"/>
+    <input :type="atti" class="input-field"/>
 </div>
 </template>
 

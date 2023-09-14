@@ -5,8 +5,8 @@ import Input from "../../components/Input.vue"
 <template>
     <div id="flex-main" class="content">
         <div class="sheet">
-            <Input title="e-mail" class="address" />
-            <Input title="password" class="password" />
+            <Input title="e-mail" atti="" class="address" />
+            <Input title="password" atti="password" class="password" />
             <router-link to="/" class="homebutton">キャンセル</router-link>
             <router-link to="/read" class="loginbutton">ログイン</router-link>
         </div>
