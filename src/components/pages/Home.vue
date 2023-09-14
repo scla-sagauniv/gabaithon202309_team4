@@ -6,11 +6,8 @@ import Link from "../components/Link.vue"
     <div id="flex-main" class="content">
         <div class="title">たいとるろご</div>
         <div id="flex-buttons" class="content-buttons">
-            <Link href="/post">
-            dsfdsfsfsdfsdfsd
-            <span>fdggfgdgdgdf</span>
-            </Link>
-            <router-link to="/login" class="opinion-button">目安箱を開ける</router-link>
+            <Link href="/post">意見を送る</Link>
+            <Link href="/login">目安箱を開ける</Link>
         </div>
     </div>
 </template>
@@ -45,20 +42,6 @@ import Link from "../components/Link.vue"
     background: #FFFFFE;
     border-radius: 0.25rem;
 }
-.opinion-button{
-    background: #FFD803;
-    text-decoration: none;
-    color: #272343;
-    width: 35%;
-    padding-top: 14px;
-    padding-bottom: 14px;
-    font-size: 22px;
-    font-weight: 600;
-    text-align: center;
-    border-radius: 0.25rem;
-}
-.opinion-button:hover{
-    background: #f8e164;
-}
+
 
 </style>

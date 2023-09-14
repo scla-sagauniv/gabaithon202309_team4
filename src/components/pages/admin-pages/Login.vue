@@ -9,7 +9,6 @@
 
 <style scoped>
 #flex-main{
-    background-color: var(--main-red);
     display: flex;
     flex-direction: column;
     align-items: center;
