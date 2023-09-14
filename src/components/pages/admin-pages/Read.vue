@@ -1,5 +1,6 @@
 <script setup>
 import Opinion from "../../components/Opinion.vue"
+import Link from '../../components/Link.vue';
 </script>
 
 <template>
@@ -13,6 +14,9 @@ import Opinion from "../../components/Opinion.vue"
                 <Opinion />
                 <Opinion />
             </div>
+        </div>
+        <div class="button-position">
+            <Link href="/" class="">ホームに戻る</Link>
         </div>
     </div>
 </template>
@@ -41,5 +45,10 @@ import Opinion from "../../components/Opinion.vue"
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+.button-position{
+    width: 100vw;
+    margin-top: 2%;
+    margin-left: 3%;
 }
 </style>
