@@ -12,9 +12,9 @@
 
             <div class="content">意見</div>
             <textarea class="contentbox" name="text" ></textarea>
-            <router-link to="" class="postbutton">post</router-link>
+            <router-link to="/result" class="postbutton">post</router-link>
         </div>
-        <router-link to="" class="homebutton">←ホームに戻る</router-link>
+        <router-link to="/" class="homebutton">←ホームに戻る</router-link>
     </div>
 </template>
 
@@ -62,8 +62,9 @@
     .postbutton{
         width: 140px;
         color: white;
-        font-size: 18px;
+        font-size: 20px;
         background: #cc3366;
+        font-weight: 600;
         border-radius:5px;
         padding-top: 8px;
         padding-bottom: 8px;
@@ -73,18 +74,27 @@
         top: 85%;
         right: 5%;
     }
+    .postbutton:hover{
+        background: #c56182;
+    }
+    
     .homebutton{
-        width: 140px;
-        background: #ffcc00;
-        font-size: 18px;
+        width: 180px;
+        color: black;
+        background: #FFD803;
+        font-size: 20px;
+        font-weight: 600;
         border-radius:5px;
-        padding-top: 8px;
-        padding-bottom: 8px;
+        padding-top: 10px;
+        padding-bottom: 10px;
         text-align: center;
         text-decoration: none;
         position: absolute;
         top: 85%;
         left: 15%;
+    }
+    .homebutton:hover{
+        background: #f8e164;
     }
     
 </style>
