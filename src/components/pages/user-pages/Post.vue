@@ -1,12 +1,34 @@
 <script setup>
 import Link from "../../components/Link.vue"
+import { ref } from 'vue';
+const title = ref('');
+const message = ref('');
+
+const FetchPost = async (title,message) =>{
+    const param ={
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            genre: title,
+            content: message
+        })
+    }
+    const endpoint = "https://func-gabaithon202309.azurewebsites.net/api/post-content?"
+    const res = await fetch(endpoint,title,message)
+    const data = await res.json()
+    console.log(title)
+    console.log(message)
+    return(data)
+}
 </script>
 
 <template>
     <div>
         <div class="sheet">
             <div class="genre">ジャンル</div>
-            <select class="genrebox">
+            <select class="genrebox" v-model="title">
                 <option>生徒会</option>
                 <option>部活</option>
                 <option>授業</option>
@@ -15,8 +37,10 @@ import Link from "../../components/Link.vue"
             </select>
 
             <div class="content">意見</div>
-            <textarea class="contentbox" name="text" ></textarea>
-            <router-link to="/result" class="postbutton">post</router-link>
+            <textarea class="contentbox" name="text" v-model="message"></textarea>
+            <router-link to="/result" class="postbutton" @click="FetchPost">post</router-link>
+            <p class="test">{{ message }}</p>
+            <p class="test2">{{ title }}</p>
         </div>
         <Link href="/" class="homebutton">←ホームに戻る</Link>
     </div>
@@ -78,13 +102,21 @@ import Link from "../../components/Link.vue"
         top: 85%;
         right: 5%;
     }
+    .test{
+        position: absolute;
+        top: 90%;
+        left: 5%;
+
+    }
+    .test2{
+        position: absolute;
+        top:90%;
+        right: 30%;
+    }
     .postbutton:hover{
         background: #f4778e;
     }
     .homebutton{
-        
-        
-        
         position: absolute;
         top: 85%;
         left: 3%;

@@ -1,19 +1,25 @@
 <script setup>
 import Opinion from "../../components/Opinion.vue"
 import Link from '../../components/Link.vue';
+const Array = [
+    [1, "genre", "content", 0],
+    [2, "genre2", "content2", 0]
+]
+console.log(Array[0][1])
 </script>
 
 <template>
     <div id="flex-main" class="content">
         <div id="flex-opinion" class="content-overflow">
-            <div class="content-opinions">
+            <!-- <div class="content-opinions">
                 <Opinion />
                 <Opinion />
             </div>
             <div class="content-opinions">
                 <Opinion />
                 <Opinion />
-            </div>
+            </div> -->
+            <Opinion />
         </div>
         <div class="button-position">
             <Link href="/" class="">ホームに戻る</Link>
