@@ -1,7 +1,7 @@
 <script setup>
-import Tag from '../components/components/Tag.vue'
-import Button from '../components/components/Button.vue'
-import Text from '../components/components/Text.vue'
+import Tag from './components/Tag.vue';
+import Button from './components/Button.vue';
+import Text from './components/Text.vue';
 </script>
 
 <template>
@@ -10,6 +10,7 @@ import Text from '../components/components/Text.vue'
             <Tag />
             <Button />
         </div>
+        <Text />
     </div>
 </template>
 
@@ -25,6 +26,6 @@ import Text from '../components/components/Text.vue'
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-top: 1%;
+    padding-top: 3%;
 }
 </style>
