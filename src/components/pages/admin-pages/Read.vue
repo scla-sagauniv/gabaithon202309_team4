@@ -1,8 +1,16 @@
 <script setup>
 import Opinion from "../../components/Opinion.vue";
-import Link from '../../components/Link.vue';
+import Link from "../../components/Link.vue";
+import { onMounted, ref } from "vue";
 
-const FetchGet = async () =>{
+const list = ref([])
+const errors = ref()
+
+onMounted(() => {
+    fetchGet()
+})
+
+const fetchGet = async () =>{
     try {
         
         const param ={
@@ -14,29 +22,30 @@ const FetchGet = async () =>{
         const endpoint = "https://func-gabaithon202309.azurewebsites.net/api/get-contents?"
         const res = await fetch(endpoint, param)
         if(res.status === 200) {
-            router.push("/result")
             const data = await res.json()
+            list.value = [...data]
             console.log(data);
-            return data;
+            return;
         }
     } catch (e) {
-        console.log("asdasda")
+        console.log(e)
         errors.value = "失敗した"
         
     }
 }
+
 
 </script>
 
 <template>
     <div id="flex-main" class="content">
         <div id="flex-opinion" class="content-overflow">
-            <Opinion title=""/>
+            <Opinion v-for="[id, title, message, isChecked] in list" :key="title" :title="title" :message="message"/>
         </div>
         <div class="button-position">
             <Link href="/" class="">ホームに戻る</Link>
         </div>
-        <button @click="FetchGet">テスト</button>
+        <button @click="fetchGet">テスト</button>
     </div>
 </template>
 

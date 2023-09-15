@@ -11,11 +11,11 @@
         <div class="tag-button-box">
             <div id="tag-flex" class="tag-content">
                 <div class="tag-circle"></div>
-                <div class="tag-text">タグ</div>
+                <div class="tag-text">{{ props.title }}</div>
             </div>
             <button class="button"></button>
         </div>
-        <div class="text-content">{{ props.title }}</div>
+        <div class="text-content">{{ props.message }}</div>
     </div>
 </template>
 
