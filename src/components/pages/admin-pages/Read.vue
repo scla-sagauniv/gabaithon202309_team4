@@ -1,10 +1,51 @@
 <script setup>
 import Opinion from "../../components/Opinion.vue";
 import Link from "../../components/Link.vue";
-import { onMounted, ref } from "vue";
+import router from '../../../router'
+import { onBeforeMount, onMounted, ref } from "vue";
+const email = "admin@gabaithon.com"; // paramsが受け取れないので決め打ち
 
 const list = ref([])
 const errors = ref()
+
+const decodeJwt = (token) => {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    return JSON.parse(decodeURIComponent(myescape(window.atob(base64))));
+};
+const myescape = (str) => {
+    return str.replace(/[^a-zA-Z0-9@*_+\-./]/g, m => {
+        const code = m.charCodeAt(0);
+        if (code <= 0xff) {
+            return '%' + ('00' + code.toString(16)).slice(-2).toUpperCase();
+        } else {
+            return '%u' + ('0000' + code.toString(16)).slice(-4).toUpperCase();
+        }
+    });
+}
+onBeforeMount(() => {
+    var sJWT = ''
+    var ck = document.cookie.split(';');
+    ck.forEach(function(value) {
+      //cookie名と値に分ける
+        var content = value.split('=');
+        if (content[0] === 'token') {
+        sJWT = content[1]
+        }
+    })
+
+    const decodedjwt = decodeJwt(sJWT)
+    console.log(decodedjwt.email)
+    console.log(email)
+    if(decodedjwt.email === email) {
+        document.cookie = 'token=; max-age=0'
+        router.push('Read')
+    }else{
+        console.log('invalid authentication. route to login...')
+        document.cookie = 'token=; max-age=0'
+        router.push('Login')
+    }
+})
 
 onMounted(() => {
     fetchGet()

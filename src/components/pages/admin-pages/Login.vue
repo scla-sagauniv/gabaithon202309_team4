@@ -1,20 +1,71 @@
 <script setup>
+import Link from "../../components/Link.vue"
+import router from '../../../router'
 import Input from "../../components/Input.vue"
-</script>
+
+import { computed, ref } from 'vue';
+const email = ref('');
+const password = ref('');
+const errors = ref('');
+const flag = ref('')
+
+const isValidValue = computed(() => email.value && password.value)
+
+const FetchLogin = async () =>{
+    // 値とれない 多分inputがコンポーネントだから
+    console.log(email.value)
+    console.log(password.value)
+    try {
+        
+        const param ={
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email.value,
+                password: password.value
+            })
+        }
+
+        const endpoint = "https://func-gabaithon202309.azurewebsites.net/api/login?"
+        const res = await fetch(endpoint, param)
+        const data = await res.json()
+        // 成功するとトークンが返ってきてReadに遷移
+        if(res.status === 200) {
+            flag.value = ""
+            console.log(data)
+            document.cookie = 'token=' + data
+            console.log(document.cookie)
+            router.push({name: 'Read', params: { auth: 'authenticated', email: email.value }})
+            console.log("login success")
+            return data;
+        }
+    } catch (e) {
+        console.log("failed")
+        errors.value = "失敗した"
+        flag.value = "ログインに失敗しました"
+        
+    }
+}
+</script>c
 
 <template>
     <div id="flex-main" class="content">
         <div class="sheet">
-            <!-- <div class="inputbuttons">
-                <Input title="e-mail" atti="" class="" />
-                <Input title="password" atti="password" class="password" />
-            </div> -->
-            <Input title="e-mail" atti="" class="" />
-            <Input title="password" atti="password" class="password" />
+            <div id="input-flex">
+                <div class="title-field">e-mail</div>
+                <input v-model="email" class="input-field"/>
+            </div>
+            <div id="input-flex">
+                <div class="title-field">password</div>
+                <input type="password" v-model="password" class="input-field"/>
+            </div>
             <div class="button-field">
                 <router-link to="/" class="homebutton">キャンセル</router-link>
-                <router-link to="/read" class="loginbutton">ログイン</router-link>
-            </div>           
+                <button class="loginbutton" @click="FetchLogin" :disabled="!isValidValue">ログイン</button>
+            </div>
+            {{ flag }}
         </div>
         
     </div>
@@ -81,8 +132,17 @@ import Input from "../../components/Input.vue"
     text-align: center;
     text-decoration: none;   
 }
-.loginbutton:hover{
-    background-color: #6cb1e7;
+
+.loginbutton:disabled{
+    width: 22%;
+    color: white;
+    background:  #999999;
+    outline: 1px solid black;
+    border-radius: 0.25rem;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
+    text-decoration: none;   
 }
 .inputbuttons{
     display: flex;
@@ -90,5 +150,22 @@ import Input from "../../components/Input.vue"
     align-items: center;
     width: 100%;
     height: 50px;
+}
+
+#input-flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.title-field{
+    width: 50%;
+}
+.input-field{
+    font-size:  20px;
+    width: 50%;
+    height: 50px;
+    outline: 1px solid black;
+    border-radius: 0.25rem;
 }
 </style>
