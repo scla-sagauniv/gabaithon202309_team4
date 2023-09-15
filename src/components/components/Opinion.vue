@@ -1,4 +1,9 @@
 <script setup>
+  const props = defineProps({
+    title: String,
+    message: String,
+  });
+
 </script>
 
 <template>
@@ -10,7 +15,7 @@
             </div>
             <button class="button"></button>
         </div>
-        <div class="text-content"></div>
+        <div class="text-content">{{ props.title }}</div>
     </div>
 </template>
 

@@ -36,8 +36,6 @@ const FetchPost = async () =>{
         errors.value = "失敗した"
         
     }
-
-    // return(data)
 }
 </script>
 

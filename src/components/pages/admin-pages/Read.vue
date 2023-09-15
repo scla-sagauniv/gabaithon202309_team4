@@ -1,21 +1,42 @@
 <script setup>
-import Opinion from "../../components/Opinion.vue"
+import Opinion from "../../components/Opinion.vue";
 import Link from '../../components/Link.vue';
-const Array = [
-    [1, "genre", "content", 0],
-    [2, "genre2", "content2", 0]
-]
-console.log(Array[0][1])
+
+const FetchGet = async () =>{
+    try {
+        
+        const param ={
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }
+        const endpoint = "https://func-gabaithon202309.azurewebsites.net/api/get-contents?"
+        const res = await fetch(endpoint, param)
+        if(res.status === 200) {
+            router.push("/result")
+            const data = await res.json()
+            console.log(data);
+            return data;
+        }
+    } catch (e) {
+        console.log("asdasda")
+        errors.value = "失敗した"
+        
+    }
+}
+
 </script>
 
 <template>
     <div id="flex-main" class="content">
         <div id="flex-opinion" class="content-overflow">
-            <Opinion />
+            <Opinion title=""/>
         </div>
         <div class="button-position">
             <Link href="/" class="">ホームに戻る</Link>
         </div>
+        <button @click="FetchGet">テスト</button>
     </div>
 </template>
 
