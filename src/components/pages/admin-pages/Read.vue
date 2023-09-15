@@ -11,14 +11,6 @@ console.log(Array[0][1])
 <template>
     <div id="flex-main" class="content">
         <div id="flex-opinion" class="content-overflow">
-            <!-- <div class="content-opinions">
-                <Opinion />
-                <Opinion />
-            </div>
-            <div class="content-opinions">
-                <Opinion />
-                <Opinion />
-            </div> -->
             <Opinion />
         </div>
         <div class="button-position">
@@ -46,11 +38,6 @@ console.log(Array[0][1])
     height: 600px;
     background: white;
     overflow: scroll;
-}
-.content-opinions{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
 }
 .button-position{
     width: 100vw;

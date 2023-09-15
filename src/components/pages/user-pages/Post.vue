@@ -2,40 +2,48 @@
 import Link from "../../components/Link.vue"
 import router from '../../../router'
 
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 const title = ref('');
 const message = ref('');
-const error = ref('');
+const errors = ref('');
 
+const isValidValue = computed(() => title.value && message.value)
 
-const FetchPost = async (title,message) =>{
-    const param ={
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            genre: title,
-            content: message
-        })
+const FetchPost = async () =>{
+    try {
+        
+        const param ={
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                genre: title.value,
+                content: message.value
+            })
+        }
+        const endpoint = "https://func-gabaithon202309.azurewebsites.net/api/post-content?"
+        const res = await fetch(endpoint, param)
+        if(res.status === 200) {
+            router.push("/result")
+            const data = await res.json()
+            console.log(title.value)
+            console.log(message.value)
+            return data;
+        }
+    } catch (e) {
+        console.log("asdasda")
+        errors.value = "失敗した"
+        
     }
-    const endpoint = "https://func-gabaithon202309.azurewebsites.net/api/post-content?"
-    const res = await fetch(endpoint,title,message)
-    router.push("/result")
-    if(res.status === 200) {
-        const data = await res.json()
-        console.log(title)
-        console.log(message)
-        return;
-    }
 
-    error = "失敗した"
     // return(data)
 }
 </script>
 
 <template>
     <div>
+        <p style="color: red;">{{  errors }} </p>
         <div class="sheet">
             <div class="genre">ジャンル</div>
             <select class="genrebox" v-model="title">
@@ -48,7 +56,7 @@ const FetchPost = async (title,message) =>{
 
             <div class="content">意見</div>
             <textarea class="contentbox" name="text" v-model="message"></textarea>
-            <button class="postbutton" @click="FetchPost">post</button>
+            <button class="postbutton" @click="FetchPost" :disabled="!isValidValue">post</button>
             <p class="test">{{ message }}</p>
             <p class="test2">{{ title }}</p>
         </div>
@@ -101,7 +109,7 @@ const FetchPost = async (title,message) =>{
         width: 140px;
         color: white;
         font-size: 20px;
-        background: var(--main-pink);
+        background-color: var(--main-pink);
         font-weight: 600;
         border-radius:5px;
         padding-top: 8px;
@@ -111,6 +119,15 @@ const FetchPost = async (title,message) =>{
         position: absolute;
         top: 85%;
         right: 5%;
+    }
+
+    
+    .postbutton:hover{
+        background-color: #f4778e;
+    }
+
+    .postbutton:disabled {
+        background-color: #999999;
     }
     .test{
         position: absolute;
@@ -122,9 +139,6 @@ const FetchPost = async (title,message) =>{
         position: absolute;
         top:90%;
         right: 30%;
-    }
-    .postbutton:hover{
-        background: #f4778e;
     }
     .homebutton{
         position: absolute;
