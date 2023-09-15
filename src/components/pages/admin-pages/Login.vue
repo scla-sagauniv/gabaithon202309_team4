@@ -15,8 +15,6 @@ const FetchLogin = async () =>{
     // 値とれない 多分inputがコンポーネントだから
     console.log(email.value)
     console.log(password.value)
-    email.value = "admin@gabaithon.com"
-    password.value = "admin"
     try {
         
         const param ={
@@ -33,7 +31,7 @@ const FetchLogin = async () =>{
         const endpoint = "https://func-gabaithon202309.azurewebsites.net/api/login?"
         const res = await fetch(endpoint, param)
         const data = await res.json()
-        // 成功するとトークンが返ってくる、失敗しても閲覧できる
+        // 成功するとトークンが返ってきてReadに遷移
         if(res.status === 200) {
             flag.value = ""
             console.log(data)
@@ -46,7 +44,7 @@ const FetchLogin = async () =>{
     } catch (e) {
         console.log("failed")
         errors.value = "失敗した"
-        flag.value = "errorが発生しました"
+        flag.value = "ログインに失敗しました"
         
     }
 }
@@ -55,15 +53,17 @@ const FetchLogin = async () =>{
 <template>
     <div id="flex-main" class="content">
         <div class="sheet">
-            <!-- <div class="inputbuttons">
-                <Input title="e-mail" atti="" class="" />
-                <Input title="password" atti="password" class="password" />
-            </div> -->
-            <Input title="e-mail" v-model="email" atti="" class="" />
-            <Input title="password"  v-model="password" atti="password" class="password" />
+            <div id="input-flex">
+                <div class="title-field">e-mail</div>
+                <input v-model="email" class="input-field"/>
+            </div>
+            <div id="input-flex">
+                <div class="title-field">password</div>
+                <input type="password" v-model="password" class="input-field"/>
+            </div>
             <div class="button-field">
                 <router-link to="/" class="homebutton">キャンセル</router-link>
-                <button class="loginbutton" @click="FetchLogin">ログイン</button>
+                <button class="loginbutton" @click="FetchLogin" :disabled="!isValidValue">ログイン</button>
             </div>
             {{ flag }}
         </div>
@@ -129,11 +129,40 @@ const FetchLogin = async () =>{
     text-align: center;
     text-decoration: none;   
 }
+
+.loginbutton:disabled{
+    width: 22%;
+    color: white;
+    background:  #999999;
+    outline: 1px solid black;
+    border-radius: 0.25rem;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
+    text-decoration: none;   
+}
 .inputbuttons{
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     height: 50px;
+}
+
+#input-flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.title-field{
+    width: 50%;
+}
+.input-field{
+    font-size:  20px;
+    width: 50%;
+    height: 50px;
+    outline: 1px solid black;
+    border-radius: 0.25rem;
 }
 </style>
