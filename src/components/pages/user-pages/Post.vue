@@ -45,18 +45,22 @@ const FetchPost = async () =>{
         <div class="sheet">
             <div class="genre">ジャンル</div>
             <select class="genrebox" v-model="title">
-                <option>生徒会</option>
-                <option>部活</option>
-                <option>授業</option>
-                <option>家庭</option>
-                <option>その他</option>
+                <option value="">選択して下さい</option>
+                <option value="授業">授業</option>
+                <option value="部活">部活</option>
+                <option value="生徒会">生徒会</option>
+                <option value="学習">学習</option>
+                <option value="校則">校則</option>
+                <option value="イベントの企画">イベントの企画</option>
+                <option value="課外活動">課外活動</option>
+                <option value="その他">その他</option>
             </select>
 
             <div class="content">意見</div>
-            <textarea class="contentbox" name="text" v-model="message"></textarea>
+            <textarea class="contentbox" name="text" v-model="message" placeholder="コメントを入力して下さい。"></textarea>
             <button class="postbutton" @click="FetchPost" :disabled="!isValidValue">post</button>
-            <p class="test">{{ message }}</p>
-            <p class="test2">{{ title }}</p>
+            <!-- <p class="test">{{ message }}</p>
+            <p class="test2">{{ title }}</p> -->
         </div>
         <Link href="/" class="homebutton">←ホームに戻る</Link>
     </div>
@@ -79,7 +83,7 @@ const FetchPost = async () =>{
         left: 5%;
     }
     .genrebox{
-        width: 92%;
+        width: 90%;
         height: 50px;
         font-size: 18px;
         outline: 2px solid #999999;
@@ -87,6 +91,7 @@ const FetchPost = async () =>{
         position: absolute;
         top: 10%;
         left: 5%;
+        right: 5%;
     }
     .content{
         position: absolute;
@@ -94,14 +99,15 @@ const FetchPost = async () =>{
         left: 5%;
     }
     .contentbox{
-        width: 92%;
+        width: 89%;
         height: 200px;
         font-size: 18px;
         outline: 2px solid #999999;
         border-radius:5px;
         position: absolute;
         top: 30%;
-        left: 4%;
+        left: 5%;
+        right: 5%;
     }
     .postbutton{
         width: 140px;
@@ -118,12 +124,9 @@ const FetchPost = async () =>{
         top: 85%;
         right: 5%;
     }
-
-    
     .postbutton:hover{
         background-color: #f4778e;
     }
-
     .postbutton:disabled {
         background-color: #999999;
     }

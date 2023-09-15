@@ -7,7 +7,7 @@
 </script>
 
 <template>
-    <div class="opinion-box">
+    <div id="main-flex" class="opinion-box">
         <div class="tag-button-box">
             <div id="tag-flex" class="tag-content">
                 <div class="tag-circle"></div>
@@ -15,18 +15,22 @@
             </div>
             <button class="button"></button>
         </div>
-        <div class="text-content">{{ props.message }}</div>
+        <textarea class="text-content">{{ props.message }}</textarea>
     </div>
 </template>
 
 <style scoped>
+#main-flex{
+    display: flex;
+    flex-direction: column;
+}
 #tag-flex{
     display: flex;
     flex-direction: row;
     margin-left: 5%;
 }
 .opinion-box {
-    height: 400px;
+    height: 700px;
     width: 40%; 
     margin-top: 3%;
     font-size: 50px;
@@ -40,13 +44,12 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-top: 3%;
+    margin-top: 2%;
 }
 .text-content{
     width: 90%;
-    height: 70%;
+    height: 60%;
     margin-left: 5%;
-    margin-top: 5%;
     border: solid;
     border-width: thin;
     border-color: black;

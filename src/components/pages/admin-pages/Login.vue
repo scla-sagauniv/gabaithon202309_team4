@@ -118,6 +118,9 @@ const FetchLogin = async () =>{
     text-decoration: none;
     
 }
+.homebutton:hover{
+    background-color: #dadad7;
+}
 .loginbutton{
     width: 22%;
     color: white;
