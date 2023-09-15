@@ -1,5 +1,4 @@
 <script setup>
-import Link from "../../components/Link.vue"
 import router from '../../../router'
 import Input from "../../components/Input.vue"
 

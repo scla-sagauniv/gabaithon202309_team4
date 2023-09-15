@@ -86,7 +86,6 @@ const fetchGet = async () =>{
         <div class="button-position">
             <Link href="/" class="">ホームに戻る</Link>
         </div>
-        <button @click="fetchGet">テスト</button>
     </div>
 </template>
 
@@ -95,7 +94,6 @@ const fetchGet = async () =>{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 5%;
 }
 #flex-opinion{
     display: flex;
@@ -103,6 +101,7 @@ const fetchGet = async () =>{
 }
 .content {
     min-width: 100vw;
+    margin-top: 3%;
 }
 .content-overflow{
     width: 80%;

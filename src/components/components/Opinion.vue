@@ -30,9 +30,10 @@
     margin-left: 5%;
 }
 .opinion-box {
-    height: 700px;
+    height: 40%;
     width: 40%; 
     margin-top: 3%;
+    margin-left: 3%;
     font-size: 50px;
     background: #FFFFFE;
     border: solid;
