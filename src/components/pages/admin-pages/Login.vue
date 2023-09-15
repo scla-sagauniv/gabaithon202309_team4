@@ -67,6 +67,9 @@ import Input from "../../components/Input.vue"
     text-decoration: none;
     
 }
+.homebutton:hover{
+    background-color: #dadad7;
+}
 .loginbutton{
     width: 22%;
     color: white;
@@ -77,6 +80,9 @@ import Input from "../../components/Input.vue"
     padding-bottom: 8px;
     text-align: center;
     text-decoration: none;   
+}
+.loginbutton:hover{
+    background-color: #6cb1e7;
 }
 .inputbuttons{
     display: flex;
