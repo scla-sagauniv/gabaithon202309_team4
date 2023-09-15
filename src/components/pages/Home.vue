@@ -4,7 +4,7 @@ import Link from "../components/Link.vue"
 
 <template>
     <div id="flex-main" class="content">
-        <div class="title">たいとるろご</div>
+        <div class="title">目安箱</div>
         <div id="flex-buttons" class="content-buttons">
             <Link href="/post">意見を送る</Link>
             <Link href="/login">目安箱を開ける</Link>
@@ -38,9 +38,10 @@ import Link from "../components/Link.vue"
     align-items: center;
     height: 210px;
     width: 40%; 
-    font-size: 50px;
+    font-size: 100px;
     background: #FFFFFE;
     border-radius: 0.25rem;
+    font-family: 'HGP行書体', serif;
 }
 
 

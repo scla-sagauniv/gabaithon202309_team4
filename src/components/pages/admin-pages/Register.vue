@@ -56,4 +56,7 @@ import Input from "../../components/Input.vue"
     text-align: center;
     text-decoration: none;
 }
+.register-button:hover{
+    background-color: #6cb1e7;
+}
 </style>
